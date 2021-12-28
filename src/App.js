@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import Form from './components/Form/Form'
+import { AppWrapper } from './styles/globalStyles'
+import { Global } from './styles/globalStyles'
+import { onChangeBackImg, onSubmitHandler } from './components/utils/utils'
+import Helmet from 'react-helmet'
 
-function App() {
+const App = () => {
+  const submitHandler = onSubmitHandler
+  const backImage = onChangeBackImg
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Helmet>
+        <title>Form PIK</title>
+        <link rel='preconnect' href='https://fonts.googleapis.com' />
+        <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+        <link
+          href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700;900&family=Ubuntu:wght@400;500;700&display=swap'
+          rel='stylesheet'
+        />
+      </Helmet>
+      <Global url={backImage} />
+      <AppWrapper>
+        <Form onSubmit={submitHandler} />
+      </AppWrapper>
+    </>
+  )
 }
 
-export default App;
+export default App
